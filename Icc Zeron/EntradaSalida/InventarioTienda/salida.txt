@@ -1,0 +1,5 @@
+Refresco: 20 unidades a $24.0 por unidad
+Leche: 40 unidades a $11.5 por unidad
+Crema: 60 unidades a $8.5 por unidad
+Tortillas: 30 unidades a $9.3 por unidad
+Papas: 30 unidades a $35.4 por unidad

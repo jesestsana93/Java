@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<project name="Torneo" default="run" basedir=".">
+         <description>
+         Torneo build  
+         </description>
+         <!-- Mostramos las variables globales -->
+         <property name="src" location="src"/>
+         <property name="build" location="build"/>
+         <property name="bandera" value="-in"/>
+         <property name="valor" value="10"/>
+         <property name="autor" value="Jesus Esteban Sanchez Alcantara"/>
+         <property name="autor" value="Samuel Infante Barrios"/>
+         
+
+                  <target name="auth">
+                 <echo message="Autor${author}"></echo>
+         </target>
+
+         <target name="init">
+         <!--creando  la carpeta build-->
+         <mkdir dir="${src}"/>
+         <mkdir dir="${build}"/>
+         <copy todir="src/">
+         <fileset dir=".">
+         <include name="**/*.java"/>
+         <exclude name="**/src/"/>
+         <exclude name="**/build/"/>
+         </fileset> 
+         </copy>
+         </target>
+         <target name="compile" depends="init" description="compilando el codigo fuente">
+         <!--Compilando el codigo del ${src}hacia ${build}-->
+               <javac includeantruntime="false" srcdir="${src}" destdir="${build}"/>
+         </target>
+
+         
+         <target name="run" depends="compile">
+                 <!--Ejecutando nuestra class Torneo -->
+                 <java fork="true" failonerror="yes" classname="Torneo" classpath="build">
+             <arg value="${bandera}"/>
+             <arg value="${valor}"/>  
+
+
+               </java>
+         </target>
+
+         <target name="clean" depends="init" description="Removes the temporary directories used">
+
+                <delete dir="${build}"/>
+                <delete dir="${src}"/>
+
+         </target>
+   </project> 
+   <!--Fin del archivo build-->
+      

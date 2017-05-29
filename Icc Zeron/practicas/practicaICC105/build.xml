@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<project name="Cajero" default="run" basedir=".">
+         <description>
+         Cuenta build  
+         </description>
+         <!-- Mostramos las variables globales -->
+         <property name="src" location="src"/>
+         <property name="build" location="build"/>
+         <property name="fuente1" value="Cajero.java"/>
+         <property name="fuente2" value="Cuenta.java"/>
+         <property name="autor" value="Jesus Esteban Sanchez Alcantara"/>
+
+         
+         <target name="auth">
+                 <echo message="Autor${author}"></echo>
+         </target>
+
+         <target name="init">
+         <!--creando  la carpeta build-->
+               <mkdir dir="${src}"/>
+               <mkdir dir="${build}"/>
+               <copy file="${fuente1}" todir="src/"/>
+               <copy file="${fuente2}" todir="src/"/>
+
+
+         </target>
+         <target name="compile" depends="init" description="compilando el codigo fuente">
+         <!--Compilando el codigo del ${src}hacia ${build}-->
+               <javac includeantruntime="false" srcdir="${src}" destdir="${build}"/>
+         </target>
+
+         
+         <target name="run" depends="compile">
+                 <!--Ejecutando nuestra class Cajero -->
+                 <java fork="true" failonerror="yes" classname="Cajero" classpath="{build}">
+                 </java>
+         </target>
+
+         <target name="clean" depends="init" description="Removes the temporary directories used">
+
+                <delete dir="${build}"/>
+                <delete dir="${src}"/>
+
+         </target>
+   </project> 
+   <!--Fin del archivo build-->
+      
