@@ -1,0 +1,53 @@
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JFrame;
+import javax.swing.ImageIcon;
+import java.awt.GridLayout;
+
+
+public class Leyenda extends JFrame {
+	
+
+	Fruta[] f = new Fruta[3];
+
+	public Leyenda() {
+
+		f[0] = new Fruta("manzana", "Malus doméstica", "manzanaAmarilla.jpg");
+	    f[1] = new Fruta("pera", "Pyrus", "pera.jpg");
+	    f[2] = new Fruta("guayaba", "Psidium guajava", "guayaba.jpg");
+	  
+
+	}
+
+
+	public void verLeyenda(int valor) {
+
+		JPanel panel = new JPanel(new GridLayout(5, 1));
+		JPanel panel_completo = new JPanel(new GridLayout(1, 2));
+
+		panel.add(new JLabel("Nombre: " + paises[valor].getNombre()));
+	    panel.add(new JLabel("Capital: " + paises[valor].getCapital()));
+	    panel.add(new JLabel("Idioma: " + paises[valor].getIdioma()));
+	    panel.add(new JLabel("Moneda: " + paises[valor].getMoneda()));
+	    panel.add(new JLabel("Extension territorial: " + Integer.toString(paises[valor].getExtension()) + " km2"));
+	    panel_completo.add(panel);
+	    panel_completo.add(new JLabel(new ImageIcon(paises[valor].getBandera())));
+
+	    add(panel_completo);
+
+	}
+
+
+	public static void muestraLeyenda(int valor) {
+
+		Leyenda leyenda = new Leyenda();
+
+		leyenda.verLeyenda(valor);
+		leyenda.setSize(500, 300);
+	    leyenda.setVisible(true);
+	    leyenda.setResizable(false);
+
+	}
+
+
+}
